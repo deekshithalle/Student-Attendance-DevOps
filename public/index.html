@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div><h1>Student Attendance Management</h1><p>Seven-period attendance • Monthly reports • DevOps-ready</p></div><span class="pill">CSE (AI & ML)</span></header>
+<main>
+  <section class="panel controls">
+    <label>Attendance date <input id="attendanceDate" type="date"></label>
+    <button id="loadBtn" class="secondary">Load date</button>
+    <button id="allPresent">Mark all present</button>
+    <button id="allAbsent" class="danger">Mark all absent</button>
+    <button id="saveBtn">Save attendance</button>
+    <span id="status" role="status"></span>
+  </section>
+  <section class="panel">
+    <div class="section-head"><div><h2>Daily attendance</h2><p>P = Present · A = Absent</p></div><span id="studentCount" class="pill">Loading students…</span></div>
+    <div class="table-wrap"><table id="attendanceTable">
+      <thead><tr><th>Roll No.</th><th>Student</th><th>Department</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th><th>P6</th><th>P7</th></tr></thead>
+      <tbody id="attendanceBody"></tbody>
+    </table></div>
+  </section>
+  <section class="panel">
+    <div class="section-head"><div><h2>Monthly report</h2><p>Attendance percentage = Present periods ÷ Recorded periods × 100</p></div></div>
+    <div class="controls report-controls"><label>Month <input id="reportMonth" type="month"></label><button id="reportBtn">Generate report</button><a id="csvLink" class="button secondary" href="#">Export CSV</a></div>
+    <div class="table-wrap"><table><thead><tr><th>Roll No.</th><th>Student</th><th>Working periods</th><th>Present</th><th>Absent</th><th>Attendance</th><th>Status</th></tr></thead><tbody id="reportBody"><tr><td colspan="7">Choose a month and generate the report.</td></tr></tbody></table></div>
+  </section>
+  <section class="panel"><h2>Add student</h2><form id="studentForm" class="controls">
+    <label>Roll number <input id="rollNo" required placeholder="e.g. 106"></label>
+    <label>Student name <input id="studentName" required placeholder="Full name"></label>
+    <label>Department <input id="department" value="CSE (AI & ML)" required></label>
+    <button type="submit">Add student</button>
+  </form></section>
+  <footer>Student Attendance Management System • Academic demo • Sample student data</footer>
+</main>
+<script src="app.js"></script>
+</body></html>

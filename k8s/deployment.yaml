@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-attendance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-attendance
+  template:
+    metadata:
+      labels:
+        app: student-attendance
+    spec:
+      containers:
+        - name: student-attendance
+          image: student-attendance:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+          # For a real deployment, persist SQLite with a PVC or use a managed database.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: student-attendance-service
+spec:
+  selector:
+    app: student-attendance
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30080
+  type: NodePort

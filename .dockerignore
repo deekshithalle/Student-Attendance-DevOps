@@ -1,0 +1,4 @@
+node_modules
+attendance.db
+.git
+npm-debug.log
